@@ -22,10 +22,14 @@
   box-sizing: border-box;
 }
 
+html {
+  height: 100%;
+}
+
 body {
+  height: 100%;
   width: 100%;
   overflow: hidden;
-  overflow-y: scroll;
   font-size: 1rem;
   font-weight: 300;
   font-family: "Roboto", sans-serif;
@@ -38,6 +42,7 @@ body {
   grid-template-columns: 10fr 26fr 14fr;
   gap: 1rem;
   width: 100%;
+  height: 100%;
   padding: 0px 10%;
 }
 
@@ -105,6 +110,11 @@ div#left>div:last-child img {
 div#middle {
   padding-right: 1rem;
   border-right: 1px solid var(--lightgrey-color1);
+  overflow-y: auto;
+}
+
+div#middle::-webkit-scrollbar {
+  display: none;
 }
 
 /********** UPDATE STATUS **********/
@@ -319,6 +329,14 @@ section#middle_status-section div:first-of-type img {
 }
 
 /********** RIGHT **********/
+
+div#right {
+  overflow-y: auto;
+}
+
+div#right::-webkit-scrollbar {
+  display: none;
+}
 
 #right_search-section {
   padding: 1rem 0;
