@@ -24,6 +24,10 @@ function changeView() {
     }
 }
 
-// Detect screen size and eliminate second row
+function closeModal() {
+    document.querySelector("#modal-tweet").style.display = "none";
+}
 
-console.log(document.querySelector(".post-article_link").getBoundingClientRect().width);
+function openModal() {
+    document.querySelector("#modal-tweet").style.display = "block";
+}
