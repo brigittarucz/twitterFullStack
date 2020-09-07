@@ -25,9 +25,9 @@ function changeView() {
 }
 
 function closeModal() {
-    document.querySelector("#modal-tweet").style.display = "none";
+    document.querySelector(event.target.parentElement.getAttribute("data-queryElement")).style.display = "none";
 }
 
 function openModal() {
-    document.querySelector("#modal-tweet").style.display = "block";
+    document.querySelector(event.target.getAttribute("data-queryElement")).style.display = "block";
 }

@@ -92,7 +92,7 @@ div#left svg.active {
   fill: var(--blue-color);
 }
 
-div#left>div:last-child {
+div#left>.account-action {
   display: grid;
   grid-template-columns: 3fr 10fr 1fr;
   align-items: center;
@@ -100,9 +100,13 @@ div#left>div:last-child {
   font-size: 0.8rem;
 }
 
-div#left>div:last-child img {
+div#left>.account-action img {
   width: 80%;
   margin-top: 5px;
+}
+
+div#left .account-action:hover {
+  cursor: pointer;
 }
 
 /********** SECTION MIDDLE **********/
@@ -599,7 +603,6 @@ div#right::-webkit-scrollbar {
   font-family: 'Roboto';
 }
 
-/* Modal Content/Box */
 .modal-tweet_content {
   background-color: #fefefe;
   margin: 10% auto; 
@@ -636,7 +639,7 @@ div#right::-webkit-scrollbar {
 /********** TEXT SIZES **********/
 
 .text-sm {
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   color: var(--darkgrey-color);
   padding: 0.25rem 0;
 }
@@ -707,4 +710,133 @@ button {
   background-color: var(--blue-hover-color);
   transition: 200ms ease-in-out;
   cursor: pointer;
+}
+
+/********** AUTHENTICATION PAGE **********/
+
+#auth-page {
+  height: 100%;
+  overflow-y: auto;
+  max-width: 600px;
+  margin: auto;
+  padding: 1rem;
+}
+
+#auth-page svg {
+  fill: var(--blue-color);
+  height: 2.5rem;
+}
+
+#auth-page_header * {
+  margin: 0.75rem;
+  width: 100%;
+  text-align: center;
+}
+
+#auth-page_header {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#auth-page_links {
+  margin: 1rem 0;
+  display: flex;
+  justify-content: center;
+}
+
+#auth-page_links a, #modal-signup a {
+  text-decoration: none;
+  margin: 0 0.25rem;
+  color: var(--blue-color);
+  font-weight: 100;
+  display: inline-block;
+  font-size: 0.9rem;
+}
+
+#modal-signup a {
+  margin: 0.5rem 0 1.5rem 0;
+}
+
+#modal-signup {
+  display: none;
+  position: fixed; 
+  z-index: 1; 
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  overflow: auto; 
+  background-color: var(--darkblue-bgmodal-color); 
+}
+
+#modal-signup svg {
+  fill: var(--blue-color);
+  height: 2rem;
+}
+
+#modal-signup .signup-header {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  grid-gap: 3rem;
+}
+
+#modal-signup .signup-header svg {
+  margin: 0 auto;
+}
+
+#modal-signup .signup-header > div svg:first-of-type {
+  height: 1.5rem;
+}
+
+.modal-signup_content {
+  background-color: #fefefe;
+  margin: 5% auto; 
+  max-width: 700px; 
+  border-radius: 10px;
+  padding: 1rem 2rem;
+}
+
+/********** FORM STYLING **********/
+
+.form-group {
+  margin: 1.5rem 0;
+}
+
+.form-group * {
+  display: block;
+  width: 100%;
+  background-color: var(--lightgrey-color2);
+}
+
+.form-group label {
+  padding: 0.5rem;
+}
+
+.form-group input {
+  border: 0;
+  border-bottom: 2px solid var(--darkgrey-color);
+  padding: 0.25rem 0.5rem;
+  font-size: 1.2rem;
+}
+
+form button.btn {
+  width: 100%;
+  height: 2.5rem;
+}
+
+.form-set .form-group {
+  display: inline-block;
+}
+
+.form-set {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1.5fr;
+  grid-gap: 0.75rem;
+}
+
+.form-group select {
+  border: 0;
+  border-bottom: 2px solid var(--darkgrey-color);
+  padding: 0.25rem 0.5rem;
+  font-size: 0.8rem;
 }
