@@ -503,16 +503,24 @@ section#middle_status-section div:first-of-type img {
 
 #middle_action-section {
   margin: 0.5rem 0;
-  display: flex;
-  justify-content: space-evenly;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr 1fr;
   border-bottom: 1px solid var(--lightgrey-color1);
+}
+
+#middle_action-section a:hover {
+  background-color: var(--blue-hover-color);
+  transition: 200ms ease-in-out;
+  color: var(--blue-color);
 }
 
 .retweet {
   border-top: 1px solid var(--lightgrey-color1);
   margin-top: -0.55rem;
-  padding: 1rem 0;
+  padding: 1rem;
   margin-bottom: 1rem;
+  margin-left: -1rem;
+  margin-right: -1rem;
 }
 
 .retweet:hover {
@@ -542,6 +550,10 @@ section#middle_status-section div:first-of-type img {
   border-top: 0;
   margin: -1rem;
   padding: 1rem;
+}
+
+.retweet .post-article {
+  pointer-events: none;
 }
 
 /********** TEXT SIZES **********/
