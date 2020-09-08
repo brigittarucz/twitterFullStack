@@ -7,25 +7,27 @@ function changeView() {
     })
 
     var previouslyClicked = document.querySelector("a.active");
-    if(previouslyClicked !== event.target) {
-    
-    event.target.classList.add("active");
-    event.target.querySelector('svg').classList.add("active");
+    if (previouslyClicked !== event.target) {
 
-    previouslyClicked.classList.remove("active");
-    previouslyClicked.querySelector("svg").classList.remove("active");
+        event.target.classList.add("active");
+        event.target.querySelector('svg').classList.add("active");
+
+        previouslyClicked.classList.remove("active");
+        previouslyClicked.querySelector("svg").classList.remove("active");
 
     }
 
-    if(document.querySelector("#middle-"+sRoute) !== null) {
-    document.querySelector("#middle-"+sRoute).style.display = "block";
+    if (document.querySelector("#middle-" + sRoute) !== null) {
+        document.querySelector("#middle-" + sRoute).style.display = "block";
     } else {
         console.log("yes");
     }
 }
 
 function closeModal() {
-    document.querySelector(event.target.parentElement.getAttribute("data-queryElement")).style.display = "none";
+    if (event.target.parentElement.getAttribute("data-queryElement") != null) {
+        document.querySelector(event.target.parentElement.getAttribute("data-queryElement")).style.display = "none";
+    }
 }
 
 function openModal() {
