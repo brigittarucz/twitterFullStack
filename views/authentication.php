@@ -1,3 +1,42 @@
+<?php
+
+    // IIFE used to return - exit() stops the page execution
+
+    // Format in users.txt: {"title":"title A"}
+    // array_push($s, ['title' => 'title A']);
+    
+    // Format in users.txt: ["title B"]
+    // array_push($s, ['title B']);
+
+    (function() { 
+        if(isset($_POST['email']) && isset($_POST['password'])) {
+            
+            // TODO: validate
+            
+            if(! filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+                echo "Invalid email";
+                return;
+            }
+
+            if(! strlen($_POST['password']) >= 8) {
+                echo "Password must have minimum 8 characters";
+                return;
+            }
+
+            require_once('../controllers/post-user.php');
+            $validUser = postUser($_POST['email'],$_POST['password']);
+            
+            if(!$validUser) {
+                echo "Improper login credentials";
+            } else {
+                echo $validUser;
+            }
+        
+        } 
+
+    })();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,16 +63,21 @@
         </section>
 
         <section id="auth-page_form">
-            <form class="login-form">
+            <form class="login-form" action="authentication.php" method="POST">
                 <div class="form-group">
-                    <label class="text-sm">Phone, email, or username</label>
-                    <input type="text" name="username">
+                    <label class="text-sm">Email</label>
+                    <input type="text" name="email" required value="brigitta@yahoo.com">
                 </div>
                 <div class="form-group">
                     <label class="text-sm">Password</label>
-                    <input type="text" name="password">
+                    <input type="text" name="password" required value="password">
                 </div>
                 <button type="submit" class="btn">Log In</button>
+                <!-- // <?php 
+                // if(isset($emailErrMsg)) {
+                // echo $emailErrMsg; 
+                // exit();
+                // } ?> -->
             </form>
         </section>
 
@@ -74,13 +118,13 @@
                 <form class="signup-form">
                     <div class="form-group">
                         <label class="text-sm">Name</label>
-                        <input type="text" name="username">
+                        <input type="text" name="name">
                     </div>
                     <div class="form-group">
-                        <label class="text-sm">Phone</label>
-                        <input type="text" name="username">
+                        <label class="text-sm">Email</label>
+                        <input type="text" name="email">
                     </div>
-                    <a href="/">Use email instead</a>
+                    <a href="/">Use phone instead</a>
                     <h4>Date of birth</h4>
                     <p class="text-sm">This will not be shown publicly. Confirm your own age, even if this account is
                         for a business, a pet, or something else.</p>
@@ -89,18 +133,18 @@
                             <label class="text-sm">Month</label>
                             <select name="month">
                                 <option></option>
-                                <option value="January">January</option>
-                                <option value="Febuary">Febuary</option>
-                                <option value="March">March</option>
-                                <option value="April">April</option>
-                                <option value="May">May</option>
-                                <option value="June">June</option>
-                                <option value="July">July</option>
-                                <option value="August">August</option>
-                                <option value="September">September</option>
-                                <option value="October">October</option>
-                                <option value="November">November</option>
-                                <option value="December">December</option>
+                                <option value="0">January</option>
+                                <option value="1">Febuary</option>
+                                <option value="2">March</option>
+                                <option value="3">April</option>
+                                <option value="4">May</option>
+                                <option value="5">June</option>
+                                <option value="6">July</option>
+                                <option value="7">August</option>
+                                <option value="8">September</option>
+                                <option value="9">October</option>
+                                <option value="10">November</option>
+                                <option value="11">December</option>
                                 </select>
                         </div>
                         <div class="form-group">

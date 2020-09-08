@@ -1,0 +1,8 @@
+[{
+    "id": "5f57bae3aebcf",
+    "email": "brigitta@yahoo.com",
+    "password": "$2y$10$RffNRUAFRL5jlfqy8K7xVudn6RSpPeoZOoVgD0.KWCfPBY9H4b3Jq",
+    "name": "Brigitta",
+    "birthdate": "16-03-1998",
+    "tweets": "[]"
+}]
