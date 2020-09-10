@@ -10,8 +10,6 @@
     }
   })();
 
-  echo uniqid();
-
 ?>
 
 <!DOCTYPE html>
@@ -223,7 +221,7 @@
               </svg>
             </a>
           </div>
-          <button class="btn btn-tweet">Tweet</button>
+          <button class="btn btn-tweet" disabled>Tweet</button>
         </section>
 
         <section id="middle_posts-section">
@@ -412,6 +410,7 @@
 
   <div id="modal-tweet">
     <div class="modal-tweet_content">
+      <form id="formTweet" onsubmit="createTweet(); return false;"> 
       <div>
         <a href="/" onclick="closeModal(); return false;" data-queryElement="#modal-tweet">
           <svg viewBox="0 0 24 24"
@@ -426,7 +425,7 @@
       </div>
       <div>
         <img src="media/icon.jpg" alt="">
-        <textarea placeholder="What's happening?" contenteditable></textarea>
+        <textarea name="tweetBody" placeholder="What's happening?" contenteditable></textarea>
       </div>
       <div class="tweet-controls">
         <a href="/">
@@ -485,8 +484,9 @@
             </g>
           </svg>
         </a>
-        <button type="button" class="btn btn-tweet" disabled>Tweet</button>
+        <button type="submit" class="btn btn-tweet">Tweet</button>
       </div>
+      </form>
     </div>
   </div>
 

@@ -8,23 +8,31 @@
         "tweetId": "5f5a341b8432d",
         "tweetBody": "tweetBodyA",
         "tweetDate": "2020\/08\/24",
-        "postedBy" : "Brigitta Rucz",
-        "postedBy@" : "@brigittaRucz12",
-        "postTag@" : "@elon",
+        "postedBy": "Brigitta Rucz",
+        "postedByAt": "@brigittaRucz12",
+        "postTagAt": "@elon",
         "link": 0,
         "media": 0,
         "hidden": 1
-    },
-    {
+    }, {
         "tweetId": "5f5a414643ead",
         "tweetBody": "tweetBodyB",
         "tweetDate": "2020\/08\/25",
-        "postedBy" : "Brigitta Rucz",
-        "postedBy@" : "@brigittaRucz12",
-        "postTag@": 0,
+        "postedBy": "Brigitta Rucz",
+        "postedByAt": "@brigittaRucz12",
+        "postTagAt": 0,
         "link": 0,
         "media": 0,
         "hidden": 0
-    }
-    ]
+    }, {
+        "tweetId": "5f5a80f9c97ee",
+        "tweetBody": "Hello world",
+        "tweetDate": "2020\/09\/10",
+        "postedBy": "Brigitta Rucz",
+        "postedByAt": "@Brigitta Rucz",
+        "postTagAt": 0,
+        "link": 0,
+        "media": 0,
+        "hidden": 0
+    }]
 }]

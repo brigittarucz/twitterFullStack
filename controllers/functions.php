@@ -1,11 +1,15 @@
 <?php
 
+function callDb() {
+    // If we have an associative array + second arg true = $aUser['email']
+    $sUsers = file_get_contents('../database/users.txt');
+    $aUsers = json_decode($sUsers);
+    return $aUsers;
+}
+
 function postUser($email, $password) {
 
-    $sUsers = file_get_contents('../database/users.txt');
-
-    // If we have an associative array + second arg true = $aUser['email']
-    $aUsers = json_decode($sUsers);
+    $aUsers = callDb();
 
     // TODO: validate password
     foreach($aUsers as $aUser) {
@@ -16,7 +20,6 @@ function postUser($email, $password) {
                $aUserToSend["name"] = $aUser->{'name'};
 
                return json_encode($aUserToSend);
-               break;
             } else {
                return 0;
            }
@@ -27,8 +30,7 @@ function postUser($email, $password) {
 
 function createUser($email, $password, $name, $birthdate) {
 
-    $aUsers = file_get_contents('../database/users.txt');
-    $aUsers = json_decode($aUsers);
+    $aUsers = callDb();
 
     // TODO: check for email duplicate
     foreach($aUsers as $aUser) {
@@ -54,12 +56,27 @@ function createUser($email, $password, $name, $birthdate) {
 
 function getUser($id) {
 
-    $aUsers = file_get_contents('../database/users.txt');
-    $aUsers = json_decode($aUsers);
+    $aUsers = callDb();
 
     foreach($aUsers as $aUser) {
         if($aUser->id == $id) {
             return $aUser;
+        }
+    }
+}
+
+function manipulateTweet($userId, $tweet, $action) {
+
+    $aUsers = callDb();
+
+    if($action == 'Add') {
+
+        foreach($aUsers as $aUser) {
+            if($aUser->id == $userId) {
+                array_push($aUser->tweets, $tweet);
+                file_put_contents('../database/users.txt', json_encode($aUsers));
+                return 'Success';
+            }
         }
     }
 }
