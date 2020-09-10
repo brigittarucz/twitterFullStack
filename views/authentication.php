@@ -34,7 +34,7 @@
                 $_SESSION['id'] = $validUser->id;
                 $_SESSION['name'] = $validUser->name;
 
-                header("Location: ../index.html");
+                header("Location: ../index.php");
             }
         
         } 
@@ -100,7 +100,7 @@
             $_SESSION['id'] = $validUser->id;
             $_SESSION['name'] = $validUser->name;
 
-            header("Location: ../index.html");
+            header("Location: ../index.php");
 
         } 
     })()

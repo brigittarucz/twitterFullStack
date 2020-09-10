@@ -43,3 +43,29 @@ function openPopup() {
     document.querySelector(event.target.getAttribute("data-queryElement")).style.display = "block";
     }
 }
+
+(async function() {
+
+    // TODO: get session id
+
+    let connectionGetSession = await fetch(
+        'get-session.php',
+        {
+            "method": "GET"
+        }
+    )
+
+    let sResponseSession = await connectionGetSession.text();
+    
+    // TODO: get user's tweets
+
+    let connectionGetTweets = await fetch(
+        'api/api-get-tweets.php?id='+sResponseSession,
+        {
+            "method": "GET"
+        }
+    )
+
+    let sResponseTweets = await connectionGetTweets.text();
+    console.log(sResponseTweets);
+})();

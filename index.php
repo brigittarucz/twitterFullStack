@@ -1,3 +1,17 @@
+<?php
+
+  (function() {
+    session_start();
+    if(!isset($_SESSION['id']) && !isset($_SESSION['name'])) {
+      header("Location: views/authentication.php");
+    } else {
+      require('controllers/functions.php');
+      
+    }
+  })();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 

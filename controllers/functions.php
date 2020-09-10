@@ -51,3 +51,16 @@ function createUser($email, $password, $name, $birthdate) {
 
     return 1;
 }
+
+function getUser($id) {
+
+    $aUsers = file_get_contents('../database/users.txt');
+    $aUsers = json_decode($aUsers);
+
+    // TODO: check for email duplicate
+    foreach($aUsers as $aUser) {
+        if($aUser->id == $id) {
+            return $aUser;
+        }
+    }
+}

@@ -1048,7 +1048,7 @@ header .header-title * {
 
 .popup-logout_content {
   position: absolute;
-  bottom: 12%;
+  bottom: 14%;
   background-color: #fefefe;
   margin-left: 10%;
   width: 15%;
@@ -1078,7 +1078,7 @@ header .header-title * {
 div#popup-logout a {
   color: var(--darkgrey-color);
   font-weight: 100;
-  font-size: 1;
+  /* font-size: 1; */
 }
 
 .popup-logout_content div:nth-of-type(2) a:hover {
