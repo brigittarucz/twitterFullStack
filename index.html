@@ -85,8 +85,20 @@
         <div>
           <img src="media/icon.jpg" alt="">
         </div>
+
+        <div id="popup-logout" onclick="closePopup(); return false;" data-queryElement="#popup-logout">
+          <div class="popup-logout_content">
+            <div>
+              <svg viewBox="0 0 24 24" class="r-9uu7rm r-jwli3a r-4qtqp9 r-yyyyoo r-2pyi3h r-n6v787 r-1xvli5t r-dnmrzs r-u8s1d r-1plcrui r-uoibet r-lrvibr r-lrsllp" style="left: calc(17.5px);"><g><path d="M12.538 6.478c-.14-.146-.335-.228-.538-.228s-.396.082-.538.228l-9.252 9.53c-.21.217-.27.538-.152.815.117.277.39.458.69.458h18.5c.302 0 .573-.18.69-.457.118-.277.058-.598-.152-.814l-9.248-9.532z"></path></g></svg>
+            </div>
+            <div>
+              <a href="views/authentication.php">Logout @brigitta</a>
+            </div>
+          </div>
+        </div>
+        
         <div>
-          <a href="views/authentication.html">
+          <a href="/" onclick="openPopup(); return false;" data-queryElement="#popup-logout">
             <p><strong>OneDoctype</strong></p>
             <p>@OneDoctype</p>
           </a>
@@ -170,7 +182,7 @@
           </div>
           <button class="btn btn-tweet">Tweet</button>
         </section>
-      
+
         <section id="middle_posts-section">
           <article class="post-article">
             <div>
@@ -732,7 +744,6 @@
     <!-- end right column -->
 
   </div>
-
 
   <div id="modal-tweet">
     <div class="modal-tweet_content">

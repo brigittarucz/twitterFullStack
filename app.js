@@ -33,3 +33,11 @@ function closeModal() {
 function openModal() {
     document.querySelector(event.target.getAttribute("data-queryElement")).style.display = "block";
 }
+
+function closePopup() {
+    document.querySelector(event.target.getAttribute("data-queryElement")).style.display = "none";
+}
+
+function openPopup() {
+    document.querySelector(event.target.getAttribute("data-queryElement")).style.display = "block";
+}

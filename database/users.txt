@@ -1,8 +1,8 @@
 [{
-    "id": "5f57bae3aebcf",
+    "id": "5f5a020190400",
     "email": "brigitta@yahoo.com",
-    "password": "$2y$10$RffNRUAFRL5jlfqy8K7xVudn6RSpPeoZOoVgD0.KWCfPBY9H4b3Jq",
-    "name": "Brigitta",
-    "birthdate": "16-03-1998",
-    "tweets": "[]"
+    "password": "$2y$10$qtF\/IA1LJJzhXIyDBZcd..iKrPTcH.42loJ\/oAo66bmJSnxPbzehu",
+    "name": "Brigitta Rucz",
+    "birthdate": "1998\/03\/01",
+    "tweets": []
 }]
