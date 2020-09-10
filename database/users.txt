@@ -4,5 +4,27 @@
     "password": "$2y$10$qtF\/IA1LJJzhXIyDBZcd..iKrPTcH.42loJ\/oAo66bmJSnxPbzehu",
     "name": "Brigitta Rucz",
     "birthdate": "1998\/03\/01",
-    "tweets": []
+    "tweets": [{
+        "tweetId": "5f5a341b8432d",
+        "tweetBody": "tweetBodyA",
+        "tweetDate": "2020\/08\/24",
+        "postedBy" : "Brigitta Rucz",
+        "postedBy@" : "@brigittaRucz12",
+        "postTag@" : "@elon",
+        "link": 0,
+        "media": 0,
+        "hidden": 1
+    },
+    {
+        "tweetId": "5f5a414643ead",
+        "tweetBody": "tweetBodyB",
+        "tweetDate": "2020\/08\/25",
+        "postedBy" : "Brigitta Rucz",
+        "postedBy@" : "@brigittaRucz12",
+        "postTag@": 0,
+        "link": 0,
+        "media": 0,
+        "hidden": 0
+    }
+    ]
 }]

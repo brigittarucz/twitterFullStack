@@ -582,9 +582,10 @@ div#right::-webkit-scrollbar {
   padding: 1rem;
 }
 
-.retweet .post-article {
-  pointer-events: none;
+.retweet .post-article:hover {
+  background-color: transparent;
 }
+
 
 /********** MODAL TWEET **********/
 
@@ -1032,10 +1033,10 @@ header .header-title * {
   text-decoration: none;
 }
 
-/********** MODAL TWEET **********/
+/********** POPUP LOGOUT **********/
 
 #popup-logout {
-  /* display: none; */
+  display: none;
   position: fixed;
   z-index: 1;
   left: 0;
@@ -1082,6 +1083,60 @@ div#popup-logout a {
 }
 
 .popup-logout_content div:nth-of-type(2) a:hover {
+  background-color: var(--lightgrey-hover-color);
+  transition: 200ms ease-in-out;
+}
+
+/********** POPUP POST **********/
+
+#popup-post {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  /* background-color: var(--darkblue-bgmodal-color); */
+}
+
+.popup-post_content {
+  position: absolute;
+  background-color: #fefefe;
+  margin-left: 60%;
+  width: 15%;
+  border-radius: 10px;
+  box-shadow: 1px 1px 15px var(--darkgrey-color2);
+}
+
+.popup-post_content div:nth-of-type(1) {
+  position: relative;
+}
+
+.popup-post_content div:nth-of-type(1) svg {
+  position: absolute;
+  top: 7.5rem;
+  fill: white;
+  height: 1rem;
+  transform: rotate(180deg);
+}
+
+.popup-post_content div:nth-of-type(2) a {
+  display: block;
+  padding: 1rem;
+  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
+  text-decoration: none;
+}
+
+div#popup-post a {
+  color: var(--darkgrey-color);
+  font-weight: 100;
+  /* font-size: 1; */
+}
+
+.popup-post_content div:nth-of-type(2) a:hover {
   background-color: var(--lightgrey-hover-color);
   transition: 200ms ease-in-out;
 }

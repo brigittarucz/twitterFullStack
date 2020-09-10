@@ -13,3 +13,10 @@ if(strlen($_GET['id']) != 13) {
     echo '{"error": "id does not have required length"}';
     exit();
 }
+
+// TODO: get user
+
+require_once('../controllers/functions.php');
+
+$aTweets = getUser($_GET['id'])->tweets;
+echo json_encode($aTweets);
