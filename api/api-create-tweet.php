@@ -54,7 +54,7 @@ try {
 
     $action = manipulateTweet($_POST['userId'], $jTweet, 'Add');
 
-} catch (Exception $ex) {
+} catch (Exception $err) {
     http_response_code(500);
     header('Content-type: application/json');
     echo '{"error":"Error '.__LINE__.'"}';

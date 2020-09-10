@@ -34,5 +34,125 @@
         "link": 0,
         "media": 0,
         "hidden": 0
+    }, {
+        "tweetId": "5f5a83926104e",
+        "tweetBody": "It should work now...",
+        "tweetDate": "2020\/09\/10",
+        "postedBy": "Brigitta Rucz",
+        "postedByAt": "@Brigitta Rucz",
+        "postTagAt": 0,
+        "link": 0,
+        "media": 0,
+        "hidden": 0
+    }, {
+        "tweetId": "5f5a83a84ba6b",
+        "tweetBody": "But does it? really?",
+        "tweetDate": "2020\/09\/10",
+        "postedBy": "Brigitta Rucz",
+        "postedByAt": "@Brigitta Rucz",
+        "postTagAt": 0,
+        "link": 0,
+        "media": 0,
+        "hidden": 0
+    }, {
+        "tweetId": "5f5a84a114fdd",
+        "tweetBody": "Let's check it out again...",
+        "tweetDate": "2020\/09\/10",
+        "postedBy": "Brigitta Rucz",
+        "postedByAt": "@Brigitta Rucz",
+        "postTagAt": 0,
+        "link": 0,
+        "media": 0,
+        "hidden": 0
+    }, {
+        "tweetId": "5f5a84baf3994",
+        "tweetBody": "Let's check it out again...",
+        "tweetDate": "2020\/09\/10",
+        "postedBy": "Brigitta Rucz",
+        "postedByAt": "@Brigitta Rucz",
+        "postTagAt": 0,
+        "link": 0,
+        "media": 0,
+        "hidden": 0
+    }, {
+        "tweetId": "5f5a84f576824",
+        "tweetBody": "Now it closes the modal..",
+        "tweetDate": "2020\/09\/10",
+        "postedBy": "Brigitta Rucz",
+        "postedByAt": "@Brigitta Rucz",
+        "postTagAt": 0,
+        "link": 0,
+        "media": 0,
+        "hidden": 0
+    }, {
+        "tweetId": "5f5a851565200",
+        "tweetBody": "Now surely it does..",
+        "tweetDate": "2020\/09\/10",
+        "postedBy": "Brigitta Rucz",
+        "postedByAt": "@Brigitta Rucz",
+        "postTagAt": 0,
+        "link": 0,
+        "media": 0,
+        "hidden": 0
+    }, {
+        "tweetId": "5f5a85169d3ea",
+        "tweetBody": "Now surely it does..",
+        "tweetDate": "2020\/09\/10",
+        "postedBy": "Brigitta Rucz",
+        "postedByAt": "@Brigitta Rucz",
+        "postTagAt": 0,
+        "link": 0,
+        "media": 0,
+        "hidden": 0
+    }, {
+        "tweetId": "5f5a85189151b",
+        "tweetBody": "Now surely it does..",
+        "tweetDate": "2020\/09\/10",
+        "postedBy": "Brigitta Rucz",
+        "postedByAt": "@Brigitta Rucz",
+        "postTagAt": 0,
+        "link": 0,
+        "media": 0,
+        "hidden": 0
+    }, {
+        "tweetId": "5f5a8519be5e8",
+        "tweetBody": "Now surely it does..",
+        "tweetDate": "2020\/09\/10",
+        "postedBy": "Brigitta Rucz",
+        "postedByAt": "@Brigitta Rucz",
+        "postTagAt": 0,
+        "link": 0,
+        "media": 0,
+        "hidden": 0
+    }, {
+        "tweetId": "5f5a85872e7ae",
+        "tweetBody": "Now lets just tweet..",
+        "tweetDate": "2020\/09\/10",
+        "postedBy": "Brigitta Rucz",
+        "postedByAt": "@Brigitta Rucz",
+        "postTagAt": 0,
+        "link": 0,
+        "media": 0,
+        "hidden": 0
+    }, {
+        "tweetId": "5f5a85a6c8c12",
+        "tweetBody": "Let's tweet again! <3",
+        "tweetDate": "2020\/09\/10",
+        "postedBy": "Brigitta Rucz",
+        "postedByAt": "@Brigitta Rucz",
+        "postTagAt": 0,
+        "link": 0,
+        "media": 0,
+        "hidden": 0
+    }, {
+        "tweetId": "5f5a85bea3bb3",
+        "tweetBody": "lets tweet.....",
+        "tweetDate": "2020\/09\/10",
+        "postedBy": "Brigitta Rucz",
+        "postedByAt": "@Brigitta Rucz",
+        "postTagAt": 0,
+        "link": 0,
+        "media": 0,
+        "hidden": 0
     }]
 }]

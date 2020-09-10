@@ -63,6 +63,25 @@ function getUser($id) {
             return $aUser;
         }
     }
+
+    echo '{"error": "User does not exist"}';
+}
+
+function getTweet($userId, $tweetId) {
+    
+    $aUsers = callDb();
+
+    foreach($aUsers as $aUser) {
+        if($aUser->id == $userId) {
+            foreach($aUser->tweets as $aTweet) {
+                if($aTweet->tweetId == $tweetId) {
+                    return $aTweet;
+                }
+            }
+        } 
+    }
+
+    echo '{"error": "User / id does not exist"}';
 }
 
 function manipulateTweet($userId, $tweet, $action) {

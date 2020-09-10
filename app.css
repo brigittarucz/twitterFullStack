@@ -681,7 +681,7 @@ div#right::-webkit-scrollbar {
 }
 
 .text-xl-dark-100 {
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   color: var(--darkblue-color);
 }
 
@@ -897,6 +897,14 @@ form button.btn {
   border-radius: 1rem;
 }
 
+#updateTweet textarea {
+  width: 100%;
+  outline: none;
+  resize: none;
+  border: 0;
+  font-family: "Roboto", sans-serif;
+}
+
 /********** PASSWORD RESET PAGE **********/
 
 #password-reset_header {
@@ -1005,6 +1013,16 @@ header .header-title * {
 
 .tweet-details_time, .tweet-details_stats, .tweet-details_actions {
   border-bottom: 1px solid var(--lightgrey-color1);
+}
+
+.tweet-details_stats {
+  display: flex;
+  justify-content: space-between;
+}
+
+.tweet-details_stats button {
+  align-self: center;
+  width: 6rem;
 }
 
 .tweet-details_time p {
@@ -1116,7 +1134,7 @@ div#popup-logout a {
 
 .popup-post_content div:nth-of-type(1) svg {
   position: absolute;
-  top: 7.5rem;
+  top: 11.15rem;
   fill: white;
   height: 1rem;
   transform: rotate(180deg);
