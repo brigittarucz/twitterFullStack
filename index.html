@@ -81,29 +81,28 @@
       <button class="btn btn-tweet" onclick="openModal()" data-queryElement="#modal-tweet">
         Tweet
       </button>
-      <div class="account-action">
-        <div>
-          <img src="media/icon.jpg" alt="">
-        </div>
-
-        <div id="popup-logout" onclick="closePopup(); return false;" data-queryElement="#popup-logout">
-          <div class="popup-logout_content">
-            <div>
-              <svg viewBox="0 0 24 24" class="r-9uu7rm r-jwli3a r-4qtqp9 r-yyyyoo r-2pyi3h r-n6v787 r-1xvli5t r-dnmrzs r-u8s1d r-1plcrui r-uoibet r-lrvibr r-lrsllp" style="left: calc(17.5px);"><g><path d="M12.538 6.478c-.14-.146-.335-.228-.538-.228s-.396.082-.538.228l-9.252 9.53c-.21.217-.27.538-.152.815.117.277.39.458.69.458h18.5c.302 0 .573-.18.69-.457.118-.277.058-.598-.152-.814l-9.248-9.532z"></path></g></svg>
-            </div>
-            <div>
-              <a href="views/authentication.php">Logout @brigitta</a>
-            </div>
+      <div id="popup-logout" onclick="closePopup(); return false;" data-queryElement="#popup-logout">
+        <div class="popup-logout_content">
+          <div>
+            <svg viewBox="0 0 24 24" class="r-9uu7rm r-jwli3a r-4qtqp9 r-yyyyoo r-2pyi3h r-n6v787 r-1xvli5t r-dnmrzs r-u8s1d r-1plcrui r-uoibet r-lrvibr r-lrsllp" style="left: calc(17.5px);"><g><path d="M12.538 6.478c-.14-.146-.335-.228-.538-.228s-.396.082-.538.228l-9.252 9.53c-.21.217-.27.538-.152.815.117.277.39.458.69.458h18.5c.302 0 .573-.18.69-.457.118-.277.058-.598-.152-.814l-9.248-9.532z"></path></g></svg>
+          </div>
+          <div>
+            <a href="views/authentication.php">Logout @brigitta</a>
           </div>
         </div>
-        
+      </div>
+      
+      <div class="account-action" onclick="openPopup(); return false;" data-queryElement="#popup-logout">
         <div>
-          <a href="/" onclick="openPopup(); return false;" data-queryElement="#popup-logout">
-            <p><strong>OneDoctype</strong></p>
-            <p>@OneDoctype</p>
+          <img data-queryElement="#popup-logout" src="media/icon.jpg" alt="">
+        </div>
+        <div >
+          <a href="/"  onclick="return false;">
+            <p data-queryElement="#popup-logout"><strong data-queryElement="#popup-logout">OneDoctype</strong></p>
+            <p data-queryElement="#popup-logout">@OneDoctype</p>
           </a>
         </div>
-        <svg viewBox="0 0 24 24">
+        <svg viewBox="0 0 24 24" data-queryElement="#popup-logout">
           <path
             d="M20.207 8.147c-.39-.39-1.023-.39-1.414 0L12 14.94 5.207 8.147c-.39-.39-1.023-.39-1.414 0-.39.39-.39 1.023 0 1.414l7.5 7.5c.195.196.45.294.707.294s.512-.098.707-.293l7.5-7.5c.39-.39.39-1.022 0-1.413z">
           </path>

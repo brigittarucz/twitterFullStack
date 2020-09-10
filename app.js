@@ -39,5 +39,7 @@ function closePopup() {
 }
 
 function openPopup() {
+    if(event.target.getAttribute("data-queryElement") != null ) {
     document.querySelector(event.target.getAttribute("data-queryElement")).style.display = "block";
+    }
 }
