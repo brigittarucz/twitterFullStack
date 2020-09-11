@@ -31,6 +31,9 @@ async function createTweet() {
 }
 
 async function getTweets() {
+
+    document.querySelector("#middle_posts-section").innerHTML = "";
+    document.querySelector('#middle_action-tweets').innerHTML = "";
    
     let sUserId = await getSession();
 
@@ -45,6 +48,7 @@ async function getTweets() {
     let sTweets = await connectionGetTweets.text();
     let jTweets = JSON.parse(sTweets);
 
+    // TODO: if they exist, remove children before inserting
 
     jTweets.forEach(jTweet => {
         let tweetBlueprint = `
@@ -409,6 +413,18 @@ async function deleteTweet() {
     tweetId = modalPopup.getAttribute('data-posttweetid');
 
     let sUserId = await getSession();
+
+    let connection = await fetch(
+        'api/api-delete-tweet.php?tweetId=' + tweetId + '&userId=' + sUserId,
+        {
+            "method": "GET"
+        }
+    )
+
+    let sReponse = await connection.text();
+
+    document.querySelector('[data-tweetid="'+tweetId+'"]').remove();
+    
 }
 
 async function updateTweet() {

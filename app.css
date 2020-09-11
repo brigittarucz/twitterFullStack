@@ -122,7 +122,15 @@ div#middle {
 }
 
 div#middle::-webkit-scrollbar {
-  display: none;
+  width: 8px;
+}
+
+div#middle::-webkit-scrollbar-track {
+  background: var(--lightgrey-color1);
+}
+
+div#middle::-webkit-scrollbar-thumb {
+  background: var(--darkgrey-color2);
 }
 
 /********** UPDATE STATUS **********/

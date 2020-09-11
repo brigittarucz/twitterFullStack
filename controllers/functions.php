@@ -115,4 +115,23 @@ function manipulateTweet($userId, $tweet, $action) {
 
         return 'Fail';
     }
+
+    if($action == 'Delete') {
+
+        foreach($aUsers as $aUser) {
+            if($aUser->id == $userId) {
+                $aTweets = $aUser->tweets;
+                foreach($aTweets as $tweetIndex => $index) {
+                    if($aTweets[$tweetIndex]->tweetId == $tweet) {
+                        array_splice($aTweets, $tweetIndex, 1);
+                        file_put_contents('../database/users.txt', json_encode($aUsers));
+                        return 'Success';
+                    }
+                }
+            }
+        }
+
+        return 'Fail';
+    }
 }
+
