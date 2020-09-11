@@ -98,4 +98,21 @@ function manipulateTweet($userId, $tweet, $action) {
             }
         }
     }
+
+    if($action == 'Update') {
+
+        foreach($aUsers as $aUser) {
+            if($aUser->id == $userId) {
+                foreach($aUser->tweets as $aTweet) {
+                    if($aTweet->tweetId == $tweet->tweetId) {
+                        $aTweet->tweetBody = $tweet->tweetBody;
+                        file_put_contents('../database/users.txt', json_encode($aUsers));
+                        return 'Success';
+                    }
+                }
+            }
+        }
+
+        return 'Fail';
+    }
 }
