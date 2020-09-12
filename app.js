@@ -503,13 +503,15 @@ function openPopup() {
     // ev.target = path / a / svg
 
     // Dynamically generated
+
     if (event.target.getAttribute("data-querypopup") != null) {
         let selector = event.target.getAttribute("data-querypopup");
         select(selector).style.display = "block";
         selector = selector.slice(1, selector.length);
         if (event.target.getAttribute("data-queryhidden") != '0') {
-            console.log(event.target.getAttribute("data-queryhidden"));
             select("." + selector + "_content .hide-tweet").textContent = "Unhide";
+        } else {
+            select("." + selector + "_content .hide-tweet").textContent = "Hide";
         }
         select("." + selector + "_content").style.top = event.target.getBoundingClientRect().top - 135 + "px";
         select("." + selector + "_content").setAttribute("data-postTweetId", event.target.getAttribute("data-tweetid"));
