@@ -1166,3 +1166,21 @@ div#popup-post a {
   background-color: var(--lightgrey-hover-color);
   transition: 200ms ease-in-out;
 }
+
+.password-reset_form_2 input {
+  border: 1px solid var(--lightblue-color);
+  font-size: 1rem;
+  padding: 0.25rem;
+  margin: 1rem 0;
+  border-radius: 1rem;
+  display: block;
+  width: 100%;
+}
+
+.password-reset_form_2 input:read-only {
+  background-color: var(--lightgrey-color1);
+}
+
+.password-reset_form_2 input:read-only:focus {
+  outline: none;
+}

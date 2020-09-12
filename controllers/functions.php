@@ -28,6 +28,25 @@ function postUser($email, $password) {
 
 }
 
+function getEmail($email) {
+
+    $sUsers = file_get_contents('database/users.txt');
+    $aUsers = json_decode($sUsers);
+
+    // TODO: send back changed password
+
+    foreach($aUsers as $aUser) {
+        if($aUser->email == $email) {
+            $hash = password_hash(uniqid(), PASSWORD_DEFAULT);
+            $aUser->password = $hash;
+            return json_encode($hash.'&id='.$aUser->id);
+        }
+    }
+
+    return 0;
+
+}
+
 function createUser($email, $password, $name, $birthdate) {
 
     $aUsers = callDb();

@@ -1,8 +1,24 @@
 <?php
 
-    session_start();
-    if(isset($_SESSION['name']) && isset($_SESSION['id'])) {
-        header('Location: home');
+    if(!isset($_GET['id'])) {
+        http_response_code(400);
+        header('Content-type: application/json');
+        echo '{"error": "Id is not set"}';
+        exit();
+    }
+
+    if(strlen($_GET['id']) != 13) {
+        http_response_code(400);
+        header('Content-type: application/json');
+        echo '{"error": "Id does not comply with the required standards"}';
+        exit();
+    }
+
+    if(!isset($_GET['password'])) {
+        http_response_code(400);
+        header('Content-type: application/json');
+        echo '{"error": "Password is not set"}';
+        exit();
     }
 
 ?>
@@ -13,7 +29,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Password Reset</title>
+    <title>Set new password</title>
     <link rel="stylesheet" type="text/css" href="../app.css">
 </head>
 
@@ -28,7 +44,7 @@
                     </path>
                 </g>
             </svg>
-            <h4 class="text-md-light-100">Password Reset</h4>
+            <h4 class="text-md-light-100">Password reset</h4>
         </div>
         <div class="header-lang">
             <p class="text-sm">English (UK) &#9662;</p>
@@ -36,10 +52,11 @@
     </header>
 
     <main id="password-reset_main">
-        <h1 class="text-lg-dark-900">Find your Twitter Account</h1>
-        <p> Enter your email, phone number or username.</p>
-        <form class="password-reset_form" onsubmit="resetPassword(); return false;" method="POST">
-            <input type="text" name="email">
+        <h1 class="text-lg-dark-900">Fill the form accordingly</h1>
+        <p> Enter the new desired password.</p>
+        <form class="password-reset_form_2" onsubmit="resetPassword(); return false;" method="POST">
+            <input type="text" name="passwordOld" readonly value="<?php echo $_GET['password']?>" placeholder="Email Password">
+            <input type="text" name="passwordNew" placeholder="New Password">
             <button type="submit">Submit</button>
         </form>
     </main>
