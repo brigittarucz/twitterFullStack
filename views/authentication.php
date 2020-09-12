@@ -89,18 +89,22 @@
 
             require_once('../controllers/functions.php');
 
-            $users = createUser($_POST['signupEmail'], $_POST['signupPassword'], $_POST['signupName'], date_format($userBirthdate,"Y/m/d"));
+            $user = createUser($_POST['signupEmail'], $_POST['signupPassword'], $_POST['signupName'], date_format($userBirthdate,"Y/m/d"));
 
-            if(!$users) {
+            if(!$user) {
                 echo 'Email already exists';
                 return;
-            }
+            } else {
 
+            $validUser = json_decode($user);
             session_start();
             $_SESSION['id'] = $validUser->id;
             $_SESSION['name'] = $validUser->name;
 
+            print_r($validUser);
+
             header("Location: ../index.php");
+            }
 
         } 
     })()

@@ -32,9 +32,10 @@ async function createTweet() {
 
 async function getTweets() {
 
-    document.querySelector("#middle_posts-section").innerHTML = "";
-    document.querySelector('#middle_action-tweets').innerHTML = "";
-   
+    if(document.querySelector("#middle_posts-section") && document.querySelector("#middle_action-tweets")) {
+        document.querySelector("#middle_posts-section").innerHTML = "";
+        document.querySelector('#middle_action-tweets').innerHTML = "";
+    }
     let sUserId = await getSession();
 
     // TODO: get user's tweets
@@ -527,7 +528,6 @@ function select($element) {
 (async function () {
 
     getTweets();
-
     // let connectionGetTweets = await fetch(
     //     'https://api.urlmeta.org/?url=https://moin.im',
     //     {

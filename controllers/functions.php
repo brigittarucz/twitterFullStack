@@ -51,7 +51,7 @@ function createUser($email, $password, $name, $birthdate) {
 
     file_put_contents('../database/users.txt', json_encode($aUsers));
 
-    return 1;
+    return json_encode($stdNewUser);
 }
 
 function getUser($id) {
