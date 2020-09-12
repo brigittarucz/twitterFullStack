@@ -8,6 +8,11 @@
     // Format in users.txt: ["title B"]
     // array_push($s, ['title B']);
 
+    session_start();
+    if(isset($_SESSION['name']) && isset($_SESSION['id'])) {
+        header('Location: home');
+    }
+
     (function() { 
         if(isset($_POST['email']) && isset($_POST['password'])) {
             
@@ -34,7 +39,7 @@
                 $_SESSION['id'] = $validUser->id;
                 $_SESSION['name'] = $validUser->name;
 
-                header("Location: ../index.php");
+                header("Location: home");
             }
         
         } 
@@ -103,7 +108,7 @@
 
             print_r($validUser);
 
-            header("Location: ../index.php");
+            header("Location: home");
             }
 
         } 
@@ -137,7 +142,7 @@
         </section>
 
         <section id="auth-page_form">
-            <form class="login-form" action="authentication.php" method="POST">
+            <form class="login-form" action="authenticate" method="POST">
                 <div class="form-group">
                     <label class="text-sm">Email</label>
                     <input type="text" name="email" required value="brigitta@yahoo.com">
@@ -156,7 +161,7 @@
         </section>
 
         <section id="auth-page_links">
-            <a href="password-reset.html">Forgot password? &#8226; </a>
+            <a href="password-reset">Forgot password? &#8226; </a>
             <a href="/" onclick="openModal(); return false;" data-queryElement="#modal-signup">Sign up for Twitter</a>
         </section>
 

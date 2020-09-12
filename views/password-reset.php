@@ -1,3 +1,12 @@
+<?php
+
+    session_start();
+    if(isset($_SESSION['name']) && isset($_SESSION['id'])) {
+        header('Location: home');
+    }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 

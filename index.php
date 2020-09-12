@@ -3,7 +3,7 @@
   (function() {
     session_start();
     if(!isset($_SESSION['id']) && !isset($_SESSION['name'])) {
-      header("Location: views/authentication.php");
+      header("Location: authenticate");
     } else {
       require('controllers/functions.php');
       // getUser($_SESSION['id']);
