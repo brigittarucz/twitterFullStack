@@ -52,7 +52,8 @@ try {
     $jTweet->media = 0;
     $jTweet->hidden = 0;
 
-    $action = manipulateTweet($_POST['userId'], $jTweet, 'Add');
+    echo $_POST['tweetBody'];
+    // $action = manipulateTweet($_POST['userId'], $jTweet, 'Add');
 
 } catch (Exception $err) {
     http_response_code(500);

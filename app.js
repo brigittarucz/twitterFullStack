@@ -9,6 +9,10 @@ async function getSession() {
     return sUserId;
 }
 
+async function getUrl($url) {
+    // connectionGetTweets =
+}
+ 
 async function createTweet() {
 
     let sUserId = await getSession();
@@ -16,17 +20,57 @@ async function createTweet() {
     var data = new FormData(select('#formTweet'));
     data.set('userId', sUserId);
 
-    let connection = await fetch(
-        'api/api-create-tweet.php', 
-        {
-            "method": "POST",
-            "body": data
-        }
-    )
+    if(data.get('tweetBody').includes("http") || data.get('tweetBody').includes("https")) {
+        let substrings = data.get('tweetBody').replace(/[\n\r]/g, " ");
+        substrings = substrings.split(" ");
+        console.log(substrings);
+        substrings.forEach(substring => {
 
-    let sResponse = await connection.text();
+            if(substring.startsWith('http') || substring.startsWith('https')) {
+                (async function() {
+                    urlMetadata =  await fetch('https://url-metadata.herokuapp.com/api/metadata?url=' + substring)
+                    .then(response => response.json())
+                    .then(data => { return data;  }).catch(error => console.log(error));
+                    
+                    data.set('urlImage', urlMetadata.data.image ? urlMetadata.data.image : urlMetadata.data.favicon);
+                    data.set('urlTitle', urlMetadata.data.title);
+                    data.set('urlDescription', urlMetadata.description);
+                    data.set('urlName', substring.includes('https') ? substring.slice(8, substring.length) : substring.slice(7, substring.length));
+
+                    let connection = await fetch(
+                        'api/api-create-tweet.php', 
+                        {
+                            "method": "POST",
+                            "body": data
+                        }
+                    )
+                
+                    let sResponse = await connection.text();
+                    console.log(sResponse);
+                    // TODO: append tweet + empty textarea on submit
+
+                    getTweets();
+
+                })();
+            } else {
+                (async function() {
+                    let connection = await fetch(
+                        'api/api-create-tweet.php', 
+                        {
+                            "method": "POST",
+                            "body": data
+                        }
+                    )
+                
+                    let sResponse = await connection.text();
     
-    getTweets();
+                    // TODO: append tweet
+    
+                    getTweets();
+                })();
+            }
+        })
+    }
 
 }
 
@@ -533,18 +577,4 @@ function select($element) {
         getTweets();
     }
 
-    let connectionGetTweets = await fetch(
-        'https://url-metadata.herokuapp.com/api/metadata?url=https://www.facebook.com/groups/expatsincopenhagen',
-        {
-            method: "GET",
-            mode: "no-cors"
-        }
-    )
-
-    let sResponse = await connectionGetTweets.text();
-    console.log(sResponse);
-
 })();
-
-
-
