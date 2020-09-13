@@ -145,11 +145,11 @@
             <form class="login-form" action="authenticate" method="POST">
                 <div class="form-group">
                     <label class="text-sm">Email</label>
-                    <input type="text" name="email" required value="brigitta@yahoo.com">
+                    <input type="text" name="email" required value="web.dev3232@gmail.com">
                 </div>
                 <div class="form-group">
                     <label class="text-sm">Password</label>
-                    <input type="text" name="password" required value="password">
+                    <input type="text" name="password" required value="newPassword">
                 </div>
                 <button type="submit" class="btn">Log In</button>
                 <!-- // <?php 

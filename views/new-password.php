@@ -54,10 +54,11 @@
     <main id="password-reset_main">
         <h1 class="text-lg-dark-900">Fill the form accordingly</h1>
         <p> Enter the new desired password.</p>
-        <form class="password-reset_form_2" onsubmit="resetPassword(); return false;" method="POST">
+        <form class="password-reset_form_2" onsubmit="modifyPassword(); return false;" method="POST">
+            <input type="hidden" name ="userId" readonly value="<?php echo $_GET['id'] ?>">
             <input type="text" name="passwordOld" readonly value="<?php echo $_GET['password']?>" placeholder="Email Password">
             <input type="text" name="passwordNew" placeholder="New Password">
-            <button type="submit">Submit</button>
+            <button type="submit" class="btn">Submit</button>
         </form>
     </main>
 

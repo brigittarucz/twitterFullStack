@@ -529,18 +529,20 @@ function select($element) {
 
 (async function () {
 
-    getTweets();
-    // let connectionGetTweets = await fetch(
-    //     'https://api.urlmeta.org/?url=https://moin.im',
-    //     {
-    //         method: "GET",
-    //         mode: "cors",
-    //         headers: {
-    //             'Authorization': 'Basic ' +  btoa("bridget.breakthrough@yahoo.com:WnmhdPbs0aJvK4f8G1K9"),
-    //         }
-    //     }
-    // )
+    if(document.querySelector("#middle_posts-section") && document.querySelector("#middle_action-tweets")) {
+        getTweets();
+    }
 
+    let connectionGetTweets = await fetch(
+        'https://url-metadata.herokuapp.com/api/metadata?url=https://www.facebook.com/groups/expatsincopenhagen',
+        {
+            method: "GET",
+            mode: "no-cors"
+        }
+    )
+
+    let sResponse = await connectionGetTweets.text();
+    console.log(sResponse);
 
 })();
 

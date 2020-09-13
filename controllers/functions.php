@@ -39,11 +39,36 @@ function getEmail($email) {
         if($aUser->email == $email) {
             $hash = password_hash(uniqid(), PASSWORD_DEFAULT);
             $aUser->password = $hash;
+            file_put_contents('database/users.txt', json_encode($aUsers));
             return json_encode($hash.'&id='.$aUser->id);
         }
     }
 
     return 0;
+
+}
+
+function updatePassword($oldPassword, $newPassword, $userId) {
+
+    $sUsers = file_get_contents('database/users.txt');
+    $aUsers = json_decode($sUsers);
+
+    foreach($aUsers as $aUser) {
+        if($aUser->id == $userId) {
+
+            echo $aUser->password.'.........';
+            echo $oldPassword; 
+            if($aUser->password == $oldPassword) {
+                $aUser->password = password_hash($newPassword, PASSWORD_DEFAULT);
+                echo json_encode($aUser);
+                file_put_contents('database/users.txt', json_encode($aUsers));
+                
+                return 200;            
+            }
+        }
+    }
+
+    return 404;
 
 }
 

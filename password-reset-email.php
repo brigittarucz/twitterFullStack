@@ -29,6 +29,7 @@ try {
         echo '{"error": "Email not found"}';
         exit();
     } else {
+        $hash = json_decode($hash);
         $hash = rtrim($hash, '"');
         $hash = ltrim($hash, '"');
         $sendNow = 1;
@@ -65,9 +66,10 @@ try {
             // $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
             $mail->send();
-            echo 'Message has been sent';
+            // echo 'Message has been sent';
+            echo '200';
         } catch (Exception $e) {
-            echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+            // echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
         }
     }
 

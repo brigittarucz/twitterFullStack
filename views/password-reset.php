@@ -38,9 +38,9 @@
     <main id="password-reset_main">
         <h1 class="text-lg-dark-900">Find your Twitter Account</h1>
         <p> Enter your email, phone number or username.</p>
-        <form class="password-reset_form" onsubmit="resetPassword(); return false;" method="POST">
-            <input type="text" name="email">
-            <button type="submit">Submit</button>
+        <form class="password-reset_form" onsubmit="sendRecoveryEmail(); return false;" method="POST">
+            <input type="email" name="email">
+            <button type="submit" class="btn">Submit</button>
         </form>
     </main>
 
