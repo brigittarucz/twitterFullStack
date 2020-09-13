@@ -168,8 +168,9 @@ function manipulateTweet($userId, $tweet, $action) {
                 foreach($aTweets as $tweetIndex => $index) {
                     if($aTweets[$tweetIndex]->tweetId == $tweet) {
                         array_splice($aTweets, $tweetIndex, 1);
+                        $aUser->tweets = $aTweets;
                         file_put_contents('../database/users.txt', json_encode($aUsers));
-                        return 'Success';
+                        return json_encode($aUsers);
                     }
                 }
             }

@@ -32,6 +32,8 @@ try {
 
     require_once('../controllers/functions.php');
 
+    echo $_GET['tweetId'];
+
     $operationStatus = manipulateTweet($_GET['userId'], $_GET['tweetId'], 'Delete');
 
     echo $operationStatus;

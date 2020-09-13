@@ -9,10 +9,6 @@ async function getSession() {
     return sUserId;
 }
 
-async function getUrl($url) {
-    // connectionGetTweets =
-}
- 
 async function createTweet() {
 
     let sUserId = await getSession();
@@ -20,13 +16,16 @@ async function createTweet() {
     var data = new FormData(select('#formTweet'));
     data.set('userId', sUserId);
 
+    document.querySelector("#modal-tweet #formTweet").reset();
+
     if(data.get('tweetBody').includes("http") || data.get('tweetBody').includes("https")) {
         let substrings = data.get('tweetBody').replace(/[\n\r]/g, " ");
         substrings = substrings.split(" ");
-        console.log(substrings);
+
         substrings.forEach(substring => {
 
             if(substring.startsWith('http') || substring.startsWith('https')) {
+                httpSubstring = 1;
                 (async function() {
                     urlMetadata =  await fetch('https://url-metadata.herokuapp.com/api/metadata?url=' + substring)
                     .then(response => response.json())
@@ -34,7 +33,7 @@ async function createTweet() {
                     
                     data.set('urlImage', urlMetadata.data.image ? urlMetadata.data.image : urlMetadata.data.favicon);
                     data.set('urlTitle', urlMetadata.data.title);
-                    data.set('urlDescription', urlMetadata.description);
+                    data.set('urlDescription', urlMetadata.data.description);
                     data.set('urlName', substring.includes('https') ? substring.slice(8, substring.length) : substring.slice(7, substring.length));
 
                     let connection = await fetch(
@@ -52,24 +51,25 @@ async function createTweet() {
                     getTweets();
 
                 })();
-            } else {
-                (async function() {
-                    let connection = await fetch(
-                        'api/api-create-tweet.php', 
-                        {
-                            "method": "POST",
-                            "body": data
-                        }
-                    )
-                
-                    let sResponse = await connection.text();
-    
-                    // TODO: append tweet
-    
-                    getTweets();
-                })();
-            }
-        })
+            } 
+        });
+
+    } else if (!data.get('tweetBody').includes("http") && !data.get('tweetBody').includes("https")) {
+            (async function() {
+                let connection = await fetch(
+                    'api/api-create-tweet.php', 
+                    {
+                        "method": "POST",
+                        "body": data
+                    }
+                )
+            
+                let sResponse = await connection.text();
+
+                // TODO: append tweet
+
+                getTweets();
+            })();
     }
 
 }
@@ -122,10 +122,11 @@ async function getTweets() {
         <div style="display:` + (jTweet['hidden'] == 0 ? 'block' : 'none') + `;">
         <p>${jTweet['tweetBody']}` + ` ` + (jTweet['postTagAt'] != 0 ? `<a href="" class="post-tag">${jTweet['postTagAt']}</a>` : '') + `</p>
         </div>
+        ` + (jTweet['link'] == 0 ? '<!--' : '')  +`
         <div class="post-article_link" style="display:` + (jTweet['hidden'] == 0 ? 'block' : 'none') + `;">
-        <img src="media/link.jpg" alt="">
-        <p class="title-link">Repeat prescriptions—does the global economy need a new diagnosis?</p>
-        <p class="description-link">Our weekly podcast on markets, the economy and business</p>
+        <img src="${jTweet['urlImage']}" alt="Tweet Image">
+        <p class="title-link">${jTweet['urlTitle']}</p>
+        <p class="description-link">${jTweet['urlDescription']}</p>
         <a href="/" class="source-link"><span class="source-icon"><svg viewBox="0 0 24 24"
                 class="r-4qtqp9 r-yyyyoo r-1xvli5t r-dnmrzs r-bnwqim r-1plcrui r-lrvibr">
                 <g>
@@ -136,11 +137,14 @@ async function getTweets() {
                     d="M7.27 22.054c-1.61 0-3.197-.735-4.225-2.125-.832-1.127-1.176-2.51-.968-3.894s.943-2.605 2.07-3.438l1.478-1.094c.334-.245.805-.175 1.05.158s.177.804-.157 1.05l-1.48 1.095c-.803.593-1.326 1.464-1.475 2.45-.148.99.097 1.975.69 2.778 1.225 1.657 3.57 2.01 5.23.785l3.528-2.608c1.658-1.225 2.01-3.57.785-5.23-.498-.674-1.187-1.15-1.992-1.376-.4-.113-.633-.527-.52-.927.112-.4.528-.63.926-.522 1.13.318 2.096.986 2.794 1.932 1.717 2.324 1.224 5.612-1.1 7.33l-3.53 2.608c-.933.693-2.023 1.026-3.105 1.026z">
                 </path>
                 </g>
-            </svg></span>entrepreneur.com</a>
+            </svg></span>${jTweet['urlName']}</a>
         </div> 
-        <!-- <div class="post-article_media">
+        ` + (jTweet['link'] == 0 ? '-->' : '')  +`
+        ` + (jTweet['media'] == 0 ? '<!--' : '')  +`
+        <div class="post-article_media">
         <img src="media/link.jpg" alt="">
-        </div> -->
+        </div>
+        ` + (jTweet['media'] == 0 ? '-->' : '')  +`
         <div style="margin: 1rem 0; display:` + (jTweet['hidden'] == 0 ? 'flex' : 'none') + `;">
         <a href="/">
             <svg viewBox="0 0 24 24"
@@ -466,7 +470,9 @@ async function deleteTweet() {
         }
     )
 
-    let sReponse = await connection.text();
+    let sResponse = await connection.text();
+
+        console.log(sResponse);
 
     document.querySelector('[data-tweetid="'+tweetId+'"]').remove();
     

@@ -48,12 +48,18 @@ try {
     $jTweet->postedBy = $user->name;
     $jTweet->postedByAt = '@'.$user->name;
     $jTweet->postTagAt = 0;
-    $jTweet->link = 0;
+    $jTweet->link = isset($_POST['urlName']) ? 1 : 0;
     $jTweet->media = 0;
     $jTweet->hidden = 0;
 
-    echo $_POST['tweetBody'];
-    // $action = manipulateTweet($_POST['userId'], $jTweet, 'Add');
+    if(isset($_POST['urlName'])) {
+        $jTweet->urlName = $_POST['urlName'];
+        $jTweet->urlImage = $_POST['urlImage'];
+        $jTweet->urlTitle = $_POST['urlTitle'];
+        $jTweet->urlDescription = $_POST['urlDescription'];
+    }
+
+    $action = manipulateTweet($_POST['userId'], $jTweet, 'Add');
 
 } catch (Exception $err) {
     http_response_code(500);

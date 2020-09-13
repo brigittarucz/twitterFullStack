@@ -250,7 +250,7 @@ section#middle_status-section div:first-of-type img {
   width: 100%;
 }
 
-.post-article div:nth-of-type(5) {
+.post-article div:last-of-type {
   grid-column: 2/span 3;
   grid-row: 4/span 1;
 }
@@ -313,7 +313,7 @@ section#middle_status-section div:first-of-type img {
   fill: var(--darkgrey-color);
 }
 
-.post-article div:nth-of-type(5) {
+.post-article div:last-of-type {
   display: flex;
   justify-content: space-around;
 }
@@ -344,6 +344,11 @@ section#middle_status-section div:first-of-type img {
 .source-link {
   display: block;
   margin-bottom: 0.5rem;
+}
+
+.source-link {
+  overflow: hidden;
+    height: 1.5rem;
 }
 
 /********** RIGHT **********/
