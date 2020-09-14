@@ -426,7 +426,7 @@
         </div>
         <div>
           <img src="media/icon.jpg" alt="">
-          <textarea name="tweetBody" placeholder="What's happening?" contenteditable></textarea>
+          <textarea minlength="10" maxlength="140" name="tweetBody" placeholder="What's happening?" contenteditable></textarea>
         </div>
         <div class="tweet-controls">
           <a href="/">

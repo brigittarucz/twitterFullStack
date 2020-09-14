@@ -74,6 +74,8 @@ function checkHttp(data, api) {
 
 async function createTweet() {
 
+    if (event.target.querySelector("textarea").value.length >= 10 && event.target.querySelector("textarea").value.length <= 140) {
+
     let sUserId = await getSession();
 
     var data = new FormData(select('#formTweet'));
@@ -85,6 +87,9 @@ async function createTweet() {
 
     await checkHttp(data, 'api/api-create-tweet.php');
 
+    } else {
+       event.target.checkValidity();
+    } 
 }
 
 async function getTweets() {
@@ -567,12 +572,26 @@ function changeView() {
 }
 
 function closeModal() {
-    if(event.target.getAttribute("data-queryElement") != null) {
-        select(event.target.getAttribute("data-queryElement")).style.display = "none";
+
+    if(event.target.parentElement.parentElement.querySelector("textarea") == null) {
+        if(event.target.getAttribute("data-queryElement") != null) {
+            select(event.target.getAttribute("data-queryElement")).style.display = "none";
+        }
+        if (event.target.parentElement.getAttribute("data-queryElement") != null) {
+            select(event.target.parentElement.getAttribute("data-queryElement")).style.display = "none";
+        }
+    } else if(event.target.parentElement.parentElement.querySelector("textarea").value.length >= 10 &&
+    event.target.parentElement.parentElement.querySelector("textarea").value.length <= 140) {
+
+        if(event.target.getAttribute("data-queryElement") != null) {
+            select(event.target.getAttribute("data-queryElement")).style.display = "none";
+        }
+        if (event.target.parentElement.getAttribute("data-queryElement") != null) {
+            select(event.target.parentElement.getAttribute("data-queryElement")).style.display = "none";
+        }
     }
-    if (event.target.parentElement.getAttribute("data-queryElement") != null) {
-        select(event.target.parentElement.getAttribute("data-queryElement")).style.display = "none";
-    }
+
+
 }
 
 function openModal() {
