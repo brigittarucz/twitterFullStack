@@ -55,7 +55,23 @@ try {
 
     $aTweet = getTweet($_POST['userId'], $_POST['tweetId']);
 
+    // TODO: check if tweet body is the same
+
     $aTweet->tweetBody = $_POST['tweetBody'];
+
+    if(isset($_POST['urlName'])) {
+        $aTweet->link = 1;
+        $aTweet->urlName = $_POST['urlName'];
+        $aTweet->urlImage = $_POST['urlImage'];
+        $aTweet->urlTitle = $_POST['urlTitle'];
+        $aTweet->urlDescription = $_POST['urlDescription'];
+    } else if(!isset($_POST['urlName']) && property_exists($aTweet, 'urlName')) {
+        $aTweet->link = 0;
+        unset($aTweet->urlName);
+        unset($aTweet->urlImage);
+        unset($aTweet->urlTitle);
+        unset($aTweet->urlDescription);
+    }
 
     $operationStatus = manipulateTweet($_POST['userId'], $aTweet, 'Update');
     
@@ -64,7 +80,7 @@ try {
         header('Content-type: application/json');
         echo '{"error": "Operation failed"}';
     } else {
-        echo 1;
+        echo $operationStatus;
     }
 
 } catch (Exception $err) {

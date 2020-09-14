@@ -9,15 +9,7 @@ async function getSession() {
     return sUserId;
 }
 
-async function createTweet() {
-
-    let sUserId = await getSession();
-
-    var data = new FormData(select('#formTweet'));
-    data.set('userId', sUserId);
-
-    document.querySelector("#modal-tweet #formTweet").reset();
-
+function checkHttp(data, api) {
     if(data.get('tweetBody').includes("http") || data.get('tweetBody').includes("https")) {
         let substrings = data.get('tweetBody').replace(/[\n\r]/g, " ");
         substrings = substrings.split(" ");
@@ -29,15 +21,21 @@ async function createTweet() {
                 (async function() {
                     urlMetadata =  await fetch('https://url-metadata.herokuapp.com/api/metadata?url=' + substring)
                     .then(response => response.json())
-                    .then(data => { return data;  }).catch(error => console.log(error));
+                    .then(data => { return data; }).catch(error => console.log(error));
                     
-                    data.set('urlImage', urlMetadata.data.image ? urlMetadata.data.image : urlMetadata.data.favicon);
-                    data.set('urlTitle', urlMetadata.data.title);
-                    data.set('urlDescription', urlMetadata.data.description);
-                    data.set('urlName', substring.includes('https') ? substring.slice(8, substring.length) : substring.slice(7, substring.length));
+                    console.log(urlMetadata);
+
+                    if(urlMetadata.error == null ) {
+                        data.set('urlImage', urlMetadata.data.image ? urlMetadata.data.image : urlMetadata.data.favicon);
+                        data.set('urlTitle', urlMetadata.data.title);
+                        data.set('urlDescription', urlMetadata.data.description);
+                        data.set('urlName', substring.includes('https') ? substring.slice(8, substring.length) : substring.slice(7, substring.length));
+                    } else {
+                        console.log("error");
+                    }
 
                     let connection = await fetch(
-                        'api/api-create-tweet.php', 
+                        api, 
                         {
                             "method": "POST",
                             "body": data
@@ -46,7 +44,8 @@ async function createTweet() {
                 
                     let sResponse = await connection.text();
                     console.log(sResponse);
-                    // TODO: append tweet + empty textarea on submit
+                    
+                    // TODO: append tweet 
 
                     getTweets();
 
@@ -57,7 +56,7 @@ async function createTweet() {
     } else if (!data.get('tweetBody').includes("http") && !data.get('tweetBody').includes("https")) {
             (async function() {
                 let connection = await fetch(
-                    'api/api-create-tweet.php', 
+                    api, 
                     {
                         "method": "POST",
                         "body": data
@@ -71,6 +70,20 @@ async function createTweet() {
                 getTweets();
             })();
     }
+}
+
+async function createTweet() {
+
+    let sUserId = await getSession();
+
+    var data = new FormData(select('#formTweet'));
+    data.set('userId', sUserId);
+
+    // TODO: invalid link case
+
+    document.querySelector("#modal-tweet #formTweet").reset();
+
+    await checkHttp(data, 'api/api-create-tweet.php');
 
 }
 
@@ -330,6 +343,7 @@ async function getTweet() {
     var tweetDetails = `
     <div class="view" id="tweet-details">
         <form id="updateTweet" onsubmit="updateTweet(); return false;">
+        <input name="previousBodyTweet" type="hidden" value="${tweet.tweetBody}">
         <input name="tweetId" type="hidden" value="${tweet.tweetId}">
         <section id="tweet-details_header">
             <svg viewBox="0 0 24 24"
@@ -486,17 +500,11 @@ async function updateTweet() {
 
     data.set('userId', sUserId);
 
-    connection = await fetch(
-        'api/api-update-tweet.php', 
-        {
-            "method": "POST",
-            "body": data
-        }
-    )
+    if(data.get('previousTweetBody') != data.get('tweetBody')) {
 
-    let sResponse = await connection.text();
-    
-    getTweets();
+        checkHttp(data, 'api/api-update-tweet.php');
+
+    };
 
     select("#tweet-details").style.display = "none";
 

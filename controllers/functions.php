@@ -147,12 +147,14 @@ function manipulateTweet($userId, $tweet, $action) {
 
         foreach($aUsers as $aUser) {
             if($aUser->id == $userId) {
-                foreach($aUser->tweets as $aTweet) {
-                    if($aTweet->tweetId == $tweet->tweetId) {
-                        $aTweet->tweetBody = $tweet->tweetBody;
-                        file_put_contents('../database/users.txt', json_encode($aUsers));
-                        return 'Success';
-                    }
+
+                for($i = 0; $i < sizeof($aUser->tweets); $i++) {
+                    if($aUser->tweets[$i]->tweetId == $tweet->tweetId) {
+                        $aUser->tweets[$i] = $tweet;
+                        var_dump($aUsers);
+                     file_put_contents('../database/users.txt', json_encode($aUsers));
+                     return 'Success';
+                    };
                 }
             }
         }
