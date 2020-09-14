@@ -18,7 +18,7 @@ try {
 
     if(isset($_POST['tweetBody'])) {
 
-        if((strlen($_POST['tweetBody']) >= 10)) {
+        if(!(strlen($_POST['tweetBody']) >= 10)) {
             http_response_code(400);
             header('Content-type: application/json');
             echo '{"error": "Body is less than 10 chars"}';

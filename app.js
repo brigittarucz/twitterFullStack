@@ -381,7 +381,7 @@ async function getTweet() {
             </div>
 
             <div class="tweet-details-text-content">
-            <textarea class="text-xl-dark-100" name="tweetBody">${tweet.tweetBody}</textarea>
+            <textarea minlength="10" maxlength="140" class="text-xl-dark-100" name="tweetBody">${tweet.tweetBody}</textarea>
             </div>
             <div class="tweet-details_media-image">
             <img src="media/image.jpg" alt="">
@@ -499,21 +499,24 @@ async function deleteTweet() {
 
 async function updateTweet() {
    
-    sUserId = await getSession();
+    if (event.target.querySelector("textarea").value.length >= 10 && event.target.querySelector("textarea").value.length <= 140) {
 
-    var data = new FormData(select('#updateTweet'));
+        sUserId = await getSession();
 
-    data.set('userId', sUserId);
+        var data = new FormData(select('#updateTweet'));
+        data.set('userId', sUserId);
 
-    if(data.get('previousTweetBody') != data.get('tweetBody')) {
+        if(data.get('previousTweetBody') != data.get('tweetBody')) {
 
-        checkHttp(data, 'api/api-update-tweet.php');
+            checkHttp(data, 'api/api-update-tweet.php');
 
-    };
+        };
 
-    select("#tweet-details").style.display = "none";
-
-    select("#middle-home").style.display = "block";
+        select("#tweet-details").style.display = "none";
+        select("#middle-home").style.display = "block";
+    } else {
+        event.target.checkValidity();
+    }
 }
 
 async function hideTweet() {
