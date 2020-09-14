@@ -23,7 +23,7 @@ function checkHttp(data, api) {
                     .then(response => response.json())
                     .then(data => { return data; }).catch(error => console.log(error));
                     
-                    console.log(urlMetadata);
+                    // console.log(urlMetadata);
 
                     if(urlMetadata.error == null ) {
                         data.set('urlImage', urlMetadata.data.image ? urlMetadata.data.image : urlMetadata.data.favicon);
@@ -43,7 +43,7 @@ function checkHttp(data, api) {
                     )
                 
                     let sResponse = await connection.text();
-                    console.log(sResponse);
+                    // console.log(sResponse);
                     
                     // TODO: append tweet 
 
@@ -486,7 +486,7 @@ async function deleteTweet() {
 
     let sResponse = await connection.text();
 
-        console.log(sResponse);
+        // console.log(sResponse);
 
     document.querySelector('[data-tweetid="'+tweetId+'"]').remove();
     
@@ -509,6 +509,35 @@ async function updateTweet() {
     select("#tweet-details").style.display = "none";
 
     select("#middle-home").style.display = "block";
+}
+
+async function hideTweet() {
+
+    const eventElement = event.target;
+
+    eventElement.parentElement.parentElement.parentElement.style.display = "none"
+    sTweetId = eventElement.parentElement.parentElement.getAttribute('data-posttweetid');
+
+    sUserId = await getSession();
+
+    var data = new FormData();
+
+    data.set('tweetId', sTweetId);
+    data.set('userId', sUserId);
+    data.set('hidden', eventElement.textContent == 'Unhide' ? 0 : 1);
+    data.set('urlName', 'no-reset');
+
+    let connexion = await fetch('api/api-update-tweet.php', 
+        {
+            "method": "POST",
+            "body": data
+        }
+    )
+
+    let sResponse = await connexion.text(); 
+
+    await getTweets();
+    // console.log(sResponse);
 }
 
 function changeView() {

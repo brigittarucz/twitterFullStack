@@ -149,7 +149,7 @@
           </div>
           <div class="popup-post_id">
             <a href="/" class="update-tweet" onclick="getTweet(); return false;">Update</a>
-            <a href="/" class="hide-tweet" onclick="return false;">Hide</a>
+            <a href="/" class="hide-tweet" onclick="hideTweet(); return false;">Hide</a>
             <a href="/" class="delete-tweet" onclick="deleteTweet(); return false;">Delete</a>
           </div>
         </div>
